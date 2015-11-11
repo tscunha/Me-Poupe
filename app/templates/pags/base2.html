@@ -1,0 +1,231 @@
+{% load staticfiles %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Me Poupe!</title>
+
+		<!-- Bootstrap Core CSS -->
+		<link href="{% static 'up/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+		<!-- MetisMenu CSS -->
+		<link href="{% static 'up/bower_components/metisMenu/dist/metisMenu.min.css' %}" rel="stylesheet">
+
+		<!-- Timeline CSS -->
+		<link href="{% static 'up/dist/css/timeline.css' %}" rel="stylesheet">
+
+		<!-- Custom CSS -->
+		<link href="{% static 'up/dist/css/sb-admin-2.css' %}" rel="stylesheet">
+
+		<!-- Morris Charts CSS -->
+		<link href="{% static 'up/bower_components/morrisjs/morris.css' %}" rel="stylesheet" type="text/css">
+
+		<!-- Custom Fonts -->
+		<link href="{% static 'up/bower_components/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div id="wrapper">
+
+			<!-- Navigation -->
+			<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="{% url 'pag_inicial' %}">Me Poupe!</a>
+				</div>
+				<!-- /.navbar-header -->
+
+				<ul class="nav navbar-top-links navbar-right">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<i class="fa fa-exclamation-circle fa-fw"></i>  <i class="fa fa-caret-down"></i>
+						</a>
+						<ul class="dropdown-menu dropdown-messages">
+							{% for h in historico %}
+								{%if h.2 >= 80%}
+							<li>
+								<a href="#">
+									<div>
+										<strong>{{user.first_name}} {{user.last_name}}</strong>
+										<span class="pull-right text-muted">
+											<em>Hoje</em>
+										</span>
+									</div>
+									<div>CUIDADO! Você ultrapassou 80% do seu objetivo na categoria {{h.0.categoria}}!</div>
+								</a>
+							</li>
+							<li class="divider"></li>
+								{% endif %}
+							{% endfor %}
+							<li>
+								<a class="text-center" href="#">
+									<strong>Ver Todas</strong>
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</li>
+						</ul>
+						<!-- /.dropdown-messages -->
+					</li>
+					<!-- /.dropdown -->
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+						</a>
+						<ul class="dropdown-menu dropdown-tasks">
+							{% for h in historico %}
+							<li>
+								<a href = {% url "categoria_detalhes" pk=h.0.categoria.id %}>
+									<div>
+										<p>
+											<strong>{{h.0.categoria}}</strong>
+											{%if h.2 >= 100%}
+											<b><span class="pull-right text-muted" style="color:red">{{h.2}}% do objetivo</span></b>
+											{%else%}
+											<span class="pull-right text-muted">{{h.2}}% do objetivo</span>
+											{%endif%}
+										</p>
+										<div class="progress progress-striped active">
+											<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{h.2}}" aria-valuemin="0" aria-valuemax="100" style="width: {{h.2}}%">
+												<span class="sr-only">{{h.2}}% Complete (success)</span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="divider"></li>
+							{% endfor %}
+
+
+
+							<li>
+								<a class="text-center" href="{% url 'lista_categorias' %}">
+									<strong>Ver Detalhes</strong>
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</li>
+						</ul>
+						<!-- /.dropdown-tasks -->
+					</li>
+					<!-- /.dropdown -->
+					<li class="dropdown">
+					</li>
+					<!-- /.dropdown -->
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+						</a>
+						<ul class="dropdown-menu dropdown-user">
+							<li><a href="#"><i class="fa fa-user fa-fw"></i> {{user.first_name}} {{user.last_name}}</a>
+							</li>
+							<li><a href="{% url 'config' %}"><i class="fa fa-gear fa-fw"></i> Configurações</a>
+							</li>
+							<li class="divider"></li>
+							<li><a href="{% url "django.contrib.auth.views.logout" %}"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+							</li>
+						</ul>
+						<!-- /.dropdown-user -->
+					</li>
+					<!-- /.dropdown -->
+				</ul>
+				<!-- /.navbar-top-links -->
+
+				<div class="navbar-default sidebar" role="navigation">
+					<div class="sidebar-nav navbar-collapse">
+						<ul class="nav" id="side-menu">
+							<li>
+								<a href="{% url 'pag_inicial' %}"><i class="fa fa-dashboard fa-fw"></i> Resumo</a>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-usd fa-fw"></i> Receitas<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li>
+										<a href="{% url 'criar_receita' %}"><i class="fa fa-plus fa-fw"></i> Adicionar Receita</a>
+									</li>
+									<li>
+										<a href="{% url 'lista_receitas' %}"><i class="fa fa-list fa-fw"></i> Ver Receitas</a>
+									</li>
+								</ul>
+								<!-- /.nav-second-level -->
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Despesas<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li>
+										<a href="{% url 'criar_despesa' %}"><i class="fa fa-minus fa-fw"></i> Adicionar Despesa</a>
+									</li>
+									<li>
+										<a href="{% url 'lista_despesas' %}"><i class="fa fa-list fa-fw"></i> Ver Despesas</a>
+									</li>
+								</ul>
+								<!-- /.nav-second-level -->
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-bars fa-fw"></i> Categorias<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li>
+										<a href="{% url 'criar_categoria' %}"><i class="fa fa-plus fa-fw"></i> Adicionar Categoria</a>
+									</li>
+									<li>
+										<a href="{% url 'lista_categorias' %}"><i class="fa fa-list fa-fw"></i> Listar Categorias</a>
+									</li>
+								</ul>
+								<!-- /.nav-second-level -->
+							</li>
+							<li>
+								<a href="{% url 'agenda' %}"><i class="fa fa-calendar fa-fw"></i> Agenda</a>
+							</li>
+						</ul>
+					</div>
+					<!-- /.sidebar-collapse -->
+				</div>
+				<!-- /.navbar-static-side -->
+			</nav>
+			
+			<div id="page-wrapper">
+				{% block content %}
+				{% endblock %}
+			</div>
+		<!-- /#wrapper -->
+
+		<!-- jQuery -->
+		<script src="{% static 'up/bower_components/jquery/dist/jquery.min.js' %}"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="{% static 'up/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+		<!-- Metis Menu Plugin JavaScript -->
+		<script src="{% static 'up/bower_components/metisMenu/dist/metisMenu.min.js' %}"></script>
+		
+		 <!-- DataTables JavaScript -->
+		<script src="{% static 'up/bower_components/datatables/media/js/jquery.dataTables.min.js' %}"></script>
+		<script src="{% static 'up/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js' %}"></script>
+
+		<!-- Custom Theme JavaScript -->
+		<script src="{% static 'up/dist/js/sb-admin-2.js' %}"></script>
+		<script src="{% static 'up/bower_components/metisMenu/dist/metisMenu.min.js' %}"></script>
+		
+		 <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+    </script>
+	</body>
+</html>

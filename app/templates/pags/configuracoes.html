@@ -1,0 +1,33 @@
+{% extends "pags/base2.html" %}
+{% block content %}
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Configurações</h1>
+	</div>
+			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Apagar todos os dados da conta</button>
+	
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Apagar dados?</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Caso deseje prosseguir, TODOS os seus dados serão apagados e não será possível de recupera-los, tem certeza que deseja prosseguir?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-danger" onclick="location.href={% url 'limpar_tudo' %}">Apagar Todos os Dados</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+
+</div>
+{% endblock content %}
+

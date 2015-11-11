@@ -1,0 +1,12 @@
+{% extends "pags/base.html" %}
+
+{% block content %}
+	<p>Bem-vindo!</p>
+	<p>Mês atual: {{mes.num}} de {{mes.ano}} / Balanço: {{mes.balanco}}</p>
+	
+	<h2><a href = {% url "criar_receita" %}>Adicionar receita</a> - <a href = {% url "lista_receitas" %}>Lista de Receitas</a></h2>
+	<h2><a href = {% url "criar_despesa" %}>Adicionar despesa</a> - <a href = {% url "lista_despesas" %}>Lista de Despesas</a></h2>
+	<h2><a href = {% url "agenda" %}>Agenda</a></</h2>
+	<h2><a href = {% url "criar_categoria" %}>Criar categoria</a> - <a href = {% url "lista_categorias" %}>Lista de Categorias</a></h2>
+	<h2><a href = {% url "limpar_tudo" %}>Limpar Tudo</a></</h2>
+{% endblock content %}

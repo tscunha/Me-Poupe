@@ -1,0 +1,22 @@
+
+input,textarea {
+    font: 300 1em/120% "Proxima Nova",sans-serif;
+    color: #7F8C97;
+    padding: .6em .8em;
+    border: 1px solid #C0C6CC;
+    background: #fff;
+    margin: 0;
+    width: 30%;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0.4em;
+    -moz-border-radius: 0.4em;
+    -ms-border-radius: 0.4em;
+    -o-border-radius: 0.4em;
+    border-radius: 0.4em;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}

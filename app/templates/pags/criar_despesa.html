@@ -1,0 +1,83 @@
+{% extends "pags/base2.html" %}
+		{% block content %}
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script>
+		  $(function() {
+			$( ".datepicker" ).datepicker({
+			  changeMonth: true,
+			  changeYear: true,
+			  yearRange: "2015:2100",
+			});
+		  });
+		</script>
+		
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Despesas</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            
+                <div>
+                    <h2>Criar nova despesa</h2>
+					{% if form.errors %}
+						{% for field in form %}
+							{% for error in field.errors %}
+								<div class="alert alert-error">
+									<strong>{{ error|escape }}</strong>
+								</div>
+							{% endfor %}
+						{% endfor %}
+						{% for error in form.non_field_errors %}
+							<div class="alert alert-error">
+								<strong>{{ error|escape }}</strong>
+							</div>
+						{% endfor %}
+					{% endif %}
+					
+					<form method="POST" class="post-form">
+						{% csrf_token %}
+						<tr>
+					<td>
+						<div class="form-group" style="width: 20%">
+                                            <label>Descrição: </label>
+                                            <input class="form-control" placeholder="Sem descrição" for={{ form.descricao }}
+                                        </div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-group" style="width: 20%">
+                                            <label>Valor: </label>
+                                            <input class="form-control" placeholder="Valor" for={{ form.valor }}
+                                        </div>
+					</td>
+				</tr>
+				<div class="form-group" style="width: 20%">
+                                            <label>Auto-Validar: </label>
+                                                <input type="checkbox" for={{ form.validada }}
+                                            
+				</div>
+				<tr>
+					<td>
+						<div class="form-group" style="width: 20%">
+											<label>Valida em(opcional): </label>
+                                            <input type="date" class="form-control"  id="datepicker" for={{ form.dataValidacao }}
+                                        </div>
+					</td>
+				</tr>
+				<div class="form-group" style="width: 20%">
+                                            <label>Categoria:</label>
+                                            <select class="form-control" for={{form.categoria}}
+                                            </select>
+                                        </div>
+						<button type="submit" class="save btn btn-default">Salvar</button>
+					</form>
+                </div>					
+			</div>
+			</script>
+
+		{% endblock content %}
+        
+		

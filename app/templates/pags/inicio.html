@@ -1,0 +1,103 @@
+{% extends "pags/base.html" %}
+
+{% block content %}
+	 <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Bem-vindo ao Me Poupe!</h1>
+                <hr>
+                <p>Comece a economizar dinheiro AGORA de maneira FÁCIL e RÁPIDA!</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">VEJA MAIS</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Não sabe para onde o seu dinheiro está indo?</h2>
+                    <hr class="light">
+                    <p class="text-faded">Cansado de passar o final do mês apertado sem poder se reunir com os amigos ou não poder ir naquele jogo do seu time do coração? Agora você pode! Com Me Poupe, você consegue com muita facilidade, guardar aquele dinheiro que faltava para os seus finais de semana!</p>
+                    <a href="{% url 'criar_usuario' %}" class="btn btn-default btn-xl">Vamos começar?</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Especialmente para você</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-calendar wow bounceIn text-primary"></i>
+                        <h3>Planejamentos</h3>
+                        <p class="text-muted">Monte seu próprio planejamento!</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-pie-chart wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                        <h3>Gráficos</h3>
+                        <p class="text-muted">Veja todos os seus gastos de maneira prática e rápida!</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-table wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                        <h3>Praticidade</h3>
+                        <p class="text-muted">Importe ou exporte seus dados.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-money wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                        <h3>Economia</h3>
+                        <p class="text-muted">Controle seus gastos e economize dinheiro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	<aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Coloque seu e-mail e receba mais novidades!</h2>
+                <div class="input1">  
+                    <input class="input1"  id="signup_email" name="Email" placeholder="Email" type="email" value="" />
+                </div>
+				<br>
+				<button type="submit" class="save btn btn-default">Enviar!</button>
+            </div>
+        </div>
+    </aside>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Fale com a gente!</h2>
+                    <hr class="primary">
+                    <p>Ainda resta alguma dúvida? Nos mande uma mensagem ou um e-mail que responderemos o mais rápido possível :)</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-facebook fa-3x wow bounceIn"></i>
+                    <p><a href="www.facebook.com/MePoupe">facebook.com/MePoupe</a></p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><a href="mailto:your-email@your-domain.com">feedback@mepoupe.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

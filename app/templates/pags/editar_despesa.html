@@ -1,0 +1,33 @@
+{% extends "pags/base2.html" %}
+{% block content %}
+
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Editar Despesa</h1>
+	</div>
+	
+	<h3>Modificar</h3>
+	<form action="{% url "editar_despesa" pk=despesa.pk %}" method="POST">
+		{% csrf_token %}
+		<tr>
+			<td>
+				<div class="form-group">
+					<label>Descrição: </label>
+					<input class="form-control" placeholder="Descrição" for={{ form.descricao }}
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="form-group">
+					<label>Valor: </label>
+					<input class="form-control" placeholder="Valor" for={{ form.valor }}
+				</div>
+			</td>
+		</tr>
+		
+		<button type="submit" class="save btn btn-default">Salvar</button>
+	</form>
+</div>
+{% endblock content %}
+	

@@ -1,0 +1,59 @@
+{% extends "pags/base.html" %}
+
+{% block content %}
+	
+<style type="text/css">
+
+
+body {
+    width: 100%;
+    height: 100%;
+	background-color: #222222;
+}
+
+</style>
+<header1>
+	<div class="header-content">
+		<div class="header-content-inner" align="center">
+
+{% if form.errors %}
+			<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+			<form method="post" action="{% url "django.contrib.auth.views.login" %}">
+{% csrf_token %}
+				<table align="center">
+					<tr>
+						<td>
+							<div class="form-group">
+								<label>Usuário: </label>
+								<input class="form-control" placeholder="Usuário" for={{ form.username }}
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="form-group">
+										<label>Senha: </label>
+										<input class="form-control"  placeholder="Senha" for={{ form.password }}
+											</div>
+										</td>
+									</tr>
+								</table>
+									<button type="submit" class="save btn btn-default">Login</button>
+								</form>
+								<div align="center" style="width: 50%">
+								<a class="btn btn-block btn-social btn-facebook" href="{% url 'social:begin' 'facebook' %}" style="width:50%">
+                                <i class="fa fa-facebook"></i> Entrar com Facebook
+								</a>
+								<a class="btn btn-block btn-social btn-twitter" href="{% url 'social:begin' 'twitter' %}" style="width:50%">
+                                <i class="fa fa-twitter"></i> Entrar com Twitter
+								</a>
+								</div>
+							</div>
+						</div>
+
+					</header1>
+
+
+{% endblock %}
