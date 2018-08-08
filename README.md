@@ -8,9 +8,13 @@ Este aplicativo foi desenvolvido como trabalho de conclusão do curso Técnico e
 
 O objetivo deste sistema é auxiliar o usuário no gerenciamento das finanças pessoais e familiares através de uma interface simples e interativa.
 
+## Como executar
+
+Neste diretório, estão inclusos todos os arquivos necessários para que o aplicativo seja executado localmente numa máquina que possua Python 3 e a framework Django instalados.
+
 ## Tecnologias
 
-Este sistema foi desenvolvido utilizando-se principalmente a framework Django em Python 3.
+Este sistema foi desenvolvido utilizando-se principalmente Django com Python 3.
 
 O visual foi construído com a biblioteca Bootstrap (HTML, CSS e JavaScript).
 
